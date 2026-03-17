@@ -34,7 +34,7 @@ h2 {
   background-color: lightblue;
   padding: 10px;
   margin: 5px;
-  width: 280px;
+  width: 260px;
 }
 
 .apps {
@@ -68,6 +68,6 @@ h2 {
 }
 
 .app-name {
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-weight: 600;
 }
