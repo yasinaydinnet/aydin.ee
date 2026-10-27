@@ -1,6 +1,35 @@
+:root {
+  --bg: papayawhip;
+  --heading: black;
+  --card-bg: lightblue;
+  --card-shadow: none;
+  --app-bg: rgba(90, 90, 90, .65);
+  --app-color: #fff;
+}
+
+html[data-theme="dark"] {
+  --bg: #0f1419;
+  --heading: #e6edf3;
+  --card-bg: #1c2735;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --app-bg: #2a3a4f;
+  --app-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --bg: #0f1419;
+    --heading: #e6edf3;
+    --card-bg: #1c2735;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    --app-bg: #2a3a4f;
+    --app-color: #fff;
+  }
+}
+
 body {
   background-blend-mode: lighten;
-  background-color: papayawhip;
+  background-color: var(--bg);
   background-size: cover;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
@@ -9,12 +38,35 @@ h1 {
   text-align: center;
   font-size: xx-large;
   margin-bottom: 20px;
-  color:black;
+  color: var(--heading);
 }
 
 h2 {
   font-size: large;
   margin: 10px 0 15px 0;
+  color: var(--heading);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--card-bg);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  font-size: 1.2em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  opacity: 80%;
 }
 
 .cards {
@@ -31,7 +83,8 @@ h2 {
 
 .card {
   border-radius: 10px;
-  background-color: lightblue;
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
   padding: 10px;
   margin: 5px;
   width: 260px;
@@ -48,8 +101,8 @@ h2 {
   display: flex;
   align-items: center;
   border-radius: 5px;
-  background: rgba(90, 90, 90, .65);
-  color: #fff;
+  background: var(--app-bg);
+  color: var(--app-color);
   text-decoration: none;
   min-height: 2.3em;
 }
@@ -70,27 +123,4 @@ h2 {
 .app-name {
   font-size: 1.1em;
   font-weight: 600;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #0f1419;
-  }
-
-  h1 {
-    color: #e6edf3;
-  }
-
-  h2 {
-    color: #e6edf3;
-  }
-
-  .card {
-    background-color: #1c2735;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  }
-
-  .app {
-    background: #2a3a4f;
-  }
 }

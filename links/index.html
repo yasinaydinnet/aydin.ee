@@ -7,9 +7,17 @@
   <meta name="description" content="Website of Ozgur Yasin Aydin">
   <title>Ozzy's Social Links</title>
   <link rel="stylesheet" href="style.css" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      if (saved) document.documentElement.setAttribute("data-theme", saved);
+    })();
+  </script>
 </head>
 
 <body>
+  <button class="theme-toggle" type="button" aria-label="Toggle dark mode" onclick="toggleTheme()"></button>
+
   <h1>Ozzy's Social Links</h1>
 
   <div class="cards">
@@ -195,6 +203,28 @@
     </div>
 
   </div>
+
+  <script>
+    function currentTheme() {
+      var set = document.documentElement.getAttribute("data-theme");
+      if (set) return set;
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+
+    function updateToggleIcon() {
+      document.querySelector(".theme-toggle").textContent =
+        currentTheme() === "dark" ? "\u2600\uFE0F" : "\u{1F319}";
+    }
+
+    function toggleTheme() {
+      var next = currentTheme() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      updateToggleIcon();
+    }
+
+    updateToggleIcon();
+  </script>
 </body>
 
 </html>
