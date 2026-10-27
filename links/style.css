@@ -75,10 +75,15 @@ h2 {
   align-items: flex-start;
   max-width: 1000px;
   gap: 0.5em;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 260px);
   justify-content: center;
+}
+
+@media (max-width: 800px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .card {
@@ -87,7 +92,7 @@ h2 {
   box-shadow: var(--card-shadow);
   padding: 10px;
   margin: 5px;
-  width: 260px;
+  width: auto;
 }
 
 .apps {
